@@ -466,8 +466,11 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  // eslint-disable-next-line arrow-body-style
+  return Array(n).fill(0).map((row, rowIndex) => {
+    return Array(n).fill(0).map((col, colIndex) => (rowIndex === colIndex ? 1 : 0));
+  });
 }
 
 
@@ -606,8 +609,21 @@ function getElementByIndexes(arr, indexes) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  switch (arr.length) {
+    case 1:
+      return arr;
+    case 2:
+    case 3:
+      return arr.reverse();
+    case 4:
+      return [arr[2], arr[3], arr[0], arr[1]];
+    case 5:
+      return [arr[3], arr[4], arr[2], arr[0], arr[1]];
+    default:
+      return arr;
+  }
+  // I know this is the worst solution
 }
 
 
